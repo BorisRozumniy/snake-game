@@ -1,0 +1,20 @@
+{
+  "name": "snake",
+  "version": "1.0.0",
+  "author": "boris",
+  "private": "true",
+  "license": "MIT",
+  "keywords": [],
+  "description": "",
+  "scripts": {
+    "dev": "webpack --watch",
+    "build": "webpack --mode=development"
+   },
+  "devDependencies": {
+    "webpack": "^5.76.3",
+    "webpack-cli": "^5.0.1"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21"
+  }
+}
