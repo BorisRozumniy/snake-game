@@ -7,11 +7,12 @@
   "keywords": [],
   "description": "",
   "scripts": {
-    "start": "webpack-dev-server",
+    "start": "webpack-dev-server --mode=development",
     "dev": "webpack --watch",
     "build": "babel src -d lib"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.21.4",
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "webpack": "^5.76.3",
