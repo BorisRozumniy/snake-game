@@ -1,22 +1,18 @@
 import { getInputDirection } from "./input.js";
+import { setResult } from "./result";
 
 export const SNAKE_SPEED = 5;
 const snakeBody = [
   { x: 11, y: 11 },
-  { x: 11, y: 12 },
-  { x: 11, y: 13 },
-  { x: 10, y: 13 },
 ];
 let newSegments = 0;
 
 export function update() {
-  // console.log('newSegments', newSegments);
   addSegments();
 
   const inputDirection = getInputDirection();
   for (let i = snakeBody.length - 2; i >= 0; i--) {
     snakeBody[i + 1] = { ...snakeBody[i] };
-    // console.log(snakeBody);
   }
 
   snakeBody[0].x += inputDirection.x;
@@ -42,11 +38,7 @@ export function onSnake(position) {
   const isSegmentIn = snakeBody.some((segment) =>
     equelPositions(segment, position)
   );
-  // console.log("onSnake", position, isSegmentIn);
   return isSegmentIn;
-  // return snakeBody.some((segment) => {
-  //   return equelPositions(segment, position);
-  // });
 }
 
 function equelPositions(pos1, pos2) {
@@ -54,10 +46,9 @@ function equelPositions(pos1, pos2) {
 }
 
 function addSegments() {
-  console.log('addSegments, newSegments:', newSegments);
   for (let i = 0; i < newSegments; i++) {
     snakeBody.push({ ...snakeBody[snakeBody.length - 1] });
-    console.log("snakeBody in add Segments", snakeBody);
+    setResult()
   }
 
   newSegments = 0;
