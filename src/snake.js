@@ -31,14 +31,21 @@ export function draw(gameBoard) {
 
 export function expandSnake(amount) {
   newSegments += amount;
-  console.log("expandSnake", newSegments, amount);
 }
 
-export function onSnake(position) {
-  const isSegmentIn = snakeBody.some((segment) =>
-    equelPositions(segment, position)
-  );
-  return isSegmentIn;
+export function onSnake(position, { ignoreHead = false } = {}) {
+  return snakeBody.some((segment, index) => {
+    if (ignoreHead && index === 0 ) return false
+    return equelPositions(segment, position)
+  })
+}
+
+export function getSnakeHead() {
+  return snakeBody[0]
+}
+
+export function snakeIntersection() {
+  return onSnake(snakeBody[0], { ignoreHead: true })
 }
 
 function equelPositions(pos1, pos2) {
